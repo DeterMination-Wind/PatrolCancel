@@ -1,0 +1,70 @@
+apply plugin: "java"
+
+version = "1.0.0"
+
+sourceSets.main.java.srcDirs = ["src"]
+
+repositories{
+    mavenCentral()
+}
+
+java{
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies{
+    compileOnly files("../Mindustry-master/desktop/build/libs/Mindustry.jar")
+}
+
+tasks.withType(JavaCompile).configureEach{
+    options.encoding = "UTF-8"
+    options.release = 17
+}
+
+jar{
+    archiveFileName = "PatrolCancel-v${version}.jar"
+    from(projectDir){
+        include "mod.json"
+    }
+    from(projectDir){
+        include "icon.png"
+    }
+}
+
+tasks.register("releaseZip", Zip){
+    group = "build"
+    description = "Packages the release jar plus README files into a zip."
+    dependsOn jar
+    archiveFileName = "PatrolCancel-v${version}.zip"
+    destinationDirectory = layout.buildDirectory.dir("libs")
+    from(jar.archiveFile)
+    from(projectDir){
+        include "README.md"
+        include "README_zh.md"
+    }
+}
+
+// workspace build output folder
+def buildOutDir = new File(rootDir.parentFile, "构建/PatrolCancel")
+
+tasks.register("copyReleaseJar", Copy){
+    group = "build"
+    description = "Copies the release jar into 构建/PatrolCancel."
+    dependsOn jar
+    from(jar.archiveFile)
+    into(buildOutDir)
+}
+
+tasks.register("copyReleaseZip", Copy){
+    group = "build"
+    description = "Copies the release zip into 构建/PatrolCancel."
+    dependsOn releaseZip
+    from(releaseZip.archiveFile)
+    into(buildOutDir)
+}
+
+tasks.named("build").configure{
+    dependsOn tasks.named("releaseZip")
+    finalizedBy tasks.named("copyReleaseJar"), tasks.named("copyReleaseZip")
+}

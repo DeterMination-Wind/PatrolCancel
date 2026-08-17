@@ -1,0 +1,11 @@
+{
+  "name": "PatrolCancel",
+  "displayName": "Patrol Cancel | 右键移动解除巡逻",
+  "author": "DeterMination-Wind",
+  "description": "右键指挥选中单位时自动解除巡逻姿态，让单位服从右键移动/攻击命令，不再卡在巡逻循环里。\nRight-click to command selected units also clears their patrol stance, so they obey move & attack orders instead of getting stuck in the patrol loop.",
+  "version": "1.0.0",
+  "minGameVersion": "155",
+  "main": "patrolcancel.PatrolCancelMod",
+  "hidden": true,
+  "java": true
+}
