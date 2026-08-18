@@ -1,13 +1,17 @@
 # Patrol Cancel
 
-[中文](README_zh.md) | [English](README.md)
+> 让右键命令真正接管单位，不被旧的巡逻状态拖回去。
 
-<p align="center"><img src="icon.png" width="128" alt="Patrol Cancel"></p>
+Patrol Cancel 是一个轻量的 Mindustry 客户端辅助模组。单位处于巡逻状态时，原版右键移动或攻击命令可能在抵达后又被旧巡逻路线接管；本模组会在普通右键命令发出前清除巡逻状态，让单位立即执行当前指令。
 
-**Patrol Cancel** 是给 Mindustry v8（原版与 MindustryX）用的轻量客户端模组。
+中键设置或排队巡逻路线的行为保持不变。模组支持 Mindustry v8 原版与 MindustryX，只在客户端处理，不需要服务器安装。
 
-## 右键移动解除巡逻
+## 安装
 
-右键指挥选中单位时，自动解除它们的巡逻（Patrol）姿态。
+从项目 Release 下载模组文件，放入 Mindustry 的 mods 目录并在游戏内启用。
 
-原版 v8 右键指挥只发移动命令、从不触碰巡逻姿态，导致巡逻单位到达点位后仍被拖回旧巡逻路线，表现为「右键拽不动、卡在原地」。本模组在每次普通右键指挥选中单位时，先清除选中的可指挥单位的巡逻姿态，再让原版移动/攻击命令照常发出——单位立即服从命令，不再卡在巡逻循环里。
+## 构建
+
+~~~powershell
+.\gradlew.bat build
+~~~
