@@ -1,5 +1,7 @@
 # Patrol Cancel
 
+> [NOTE] 若有反馈，请发送反馈到bugsoc@qq.com / If you have any feedback, please send it to bugsoc@qq.com
+
 > 让右键命令真正接管单位，不被旧的巡逻状态拖回去。
 
 **Patrol Cancel** 是一个轻量的 Mindustry 客户端辅助模组。它解决的是一个很具体、也很烦人的指挥问题：单位明明收到了右键移动或攻击命令，却因为仍处于巡逻状态，在抵达后又回到旧的巡逻路线。
